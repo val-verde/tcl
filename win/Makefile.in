@@ -597,7 +597,7 @@ tclOOStubLib.${OBJEXT}: tclOOStubLib.c
 	$(CC) -c $(CC_SWITCHES) -DBUILD_tcl @DEPARG@ $(CC_OBJNAME)
 
 .rc.$(RES):
-	$(RC) @RC_OUT@ $@ @RC_TYPE@ @RC_DEFINES@ @RC_INCLUDE@ "$(GENERIC_DIR_NATIVE)" @RC_INCLUDE@ "$(WIN_DIR_NATIVE)" @DEPARG@
+	$(RC) @RC_OUT@ $@ @RC_TYPE@ @RC_DEFINES@ @RC_INCLUDE@ "$(TOP_DIR)" @RC_INCLUDE@ "$(GENERIC_DIR_NATIVE)" @RC_INCLUDE@ "$(WIN_DIR_NATIVE)" @DEPARG@
 
 # The following target generates the file generic/tclDate.c from the yacc
 # grammar found in generic/tclGetDate.y. This is only run by hand as yacc is
