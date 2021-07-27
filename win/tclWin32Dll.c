@@ -673,6 +673,7 @@ TclWinCPUID(
      * off 'regPtr'.
      */
 
+#   if defined(__x86_64__)
     __asm__ __volatile__(
 	/*
 	 * Do the CPUID instruction, and save the results in the 'regsPtr'
@@ -694,6 +695,7 @@ TclWinCPUID(
 	[rptr]		"m"	(regsPtr)
 	:
 	"%eax", "%ebx", "%ecx", "%edx", "%esi", "%edi", "memory");
+#   endif
     status = TCL_OK;
 
 #   else
