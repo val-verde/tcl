@@ -818,7 +818,11 @@ static const TclIntPlatStubs tclIntPlatStubs = {
     TclWinSetInterfaces, /* 26 */
     TclWinFlushDirtyChannels, /* 27 */
     TclWinResetInterfaces, /* 28 */
+#if defined _M_IX86 || defined _M_X64
     TclWinCPUID, /* 29 */
+#else
+    0, /* 29 */
+#endif
     TclUnixOpenTemporaryFile, /* 30 */
 #endif /* WIN */
 #ifdef MAC_OSX_TCL /* MACOSX */

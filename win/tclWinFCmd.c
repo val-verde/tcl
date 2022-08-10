@@ -156,7 +156,7 @@ DoRenameFile(
     const WCHAR *nativeDst)	/* New pathname for file or directory
 				 * (native). */
 {
-#if defined(HAVE_NO_SEH) && !defined(_WIN64)
+#if defined(HAVE_NO_SEH) && defined(_M_IX86)
     TCLEXCEPTION_REGISTRATION registration;
 #endif
     DWORD srcAttr, dstAttr;
@@ -178,7 +178,7 @@ DoRenameFile(
      * arguments is a char block device.
      */
 
-#if defined(HAVE_NO_SEH) && !defined(_WIN64)
+#if defined(HAVE_NO_SEH) && defined(_M_IX86)
     /*
      * Don't have SEH available, do things the hard way. Note that this needs
      * to be one block of asm, to avoid stack imbalance; also, it is illegal
@@ -543,7 +543,7 @@ DoCopyFile(
     const WCHAR *nativeSrc,	/* Pathname of file to be copied (native). */
     const WCHAR *nativeDst)	/* Pathname of file to copy to (native). */
 {
-#if defined(HAVE_NO_SEH) && !defined(_WIN64)
+#if defined(HAVE_NO_SEH) && defined(_M_IX86)
     TCLEXCEPTION_REGISTRATION registration;
 #endif
     int retval = -1;
@@ -564,7 +564,7 @@ DoCopyFile(
      * arguments is a char block device.
      */
 
-#if defined(HAVE_NO_SEH) && !defined(_WIN64)
+#if defined(HAVE_NO_SEH) && defined(_M_IX86)
     /*
      * Don't have SEH available, do things the hard way. Note that this needs
      * to be one block of asm, to avoid stack imbalance; also, it is illegal

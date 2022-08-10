@@ -518,6 +518,7 @@ NativeGetMicroseconds(void)
 		unsigned int regs[4];
 
 		GetSystemInfo(&systemInfo);
+#if defined _M_IX86 || defined _M_X64
 		if (TclWinCPUID(0, regs) == TCL_OK
 			&& regs[1] == 0x756E6547	/* "Genu" */
 			&& regs[3] == 0x49656E69	/* "ineI" */
@@ -529,7 +530,9 @@ NativeGetMicroseconds(void)
 			&& (((regs[1]&0x00FF0000) >> 16)/* CPU count */
 			    == systemInfo.dwNumberOfProcessors)) {
 		    timeInfo.perfCounterAvailable = TRUE;
-		} else {
+		} else
+#endif
+		{
 		    timeInfo.perfCounterAvailable = FALSE;
 		}
 	    }

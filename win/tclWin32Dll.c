@@ -636,6 +636,7 @@ Tcl_WinTCharToUtf(
 #endif
 }
 
+#if defined _M_IX86 || defined _M_X64
 /*
  *------------------------------------------------------------------------
  *
@@ -846,6 +847,7 @@ TclWinCPUID(
 #endif
     return status;
 }
+#endif
 
 /*
  * Local Variables:
